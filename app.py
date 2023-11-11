@@ -48,16 +48,20 @@ def callback():
 ##### 基本上程式編輯都在這個function ##### 
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
+    print('message~~~')
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
+        #推播訊息給我自己
         line_bot_api.push_message('U581ffde1bc9cb258045fe4d4781b57cc', TextSendMessage(text='你可以開始了'))
-        # line_bot_api.reply_message_with_http_info(
-        #     ReplyMessageRequest(
-        #         reply_token=event.reply_token,
-        #         messages=[TextMessage(text=event.message.text)]
-        #     )
-        # )
+        #回復訊息給用戶
+        line_bot_api.reply_message_with_http_info(
+            ReplyMessageRequest(
+                reply_token=event.reply_token,
+                messages=[TextMessage(text=event.message.text)]
+            )
+        )
 
 #主程式 
 if __name__ == "__main__":
+    print('run~~~')
     app.run()
