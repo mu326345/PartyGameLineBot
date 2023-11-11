@@ -50,13 +50,13 @@ def callback():
 def handle_message(event):
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
-        # line_bot_api.push_message('U581ffde1bc9cb258045fe4d4781b57cc', TextSendMessage(text='你可以開始了'))
-        line_bot_api.reply_message_with_http_info(
-            ReplyMessageRequest(
-                reply_token=event.reply_token,
-                messages=[TextMessage(text=event.message.text)]
-            )
-        )
+        line_bot_api.push_message('U581ffde1bc9cb258045fe4d4781b57cc', TextSendMessage(text='你可以開始了'))
+        # line_bot_api.reply_message_with_http_info(
+        #     ReplyMessageRequest(
+        #         reply_token=event.reply_token,
+        #         messages=[TextMessage(text=event.message.text)]
+        #     )
+        # )
 
 #主程式 
 if __name__ == "__main__":
