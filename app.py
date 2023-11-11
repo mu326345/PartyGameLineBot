@@ -12,7 +12,8 @@ from linebot.v3.messaging import (
     ApiClient,
     MessagingApi,
     ReplyMessageRequest,
-    TextMessage
+    TextMessage,
+    PushMessageRequest
 )
 from linebot.v3.webhooks import (
     MessageEvent,
@@ -53,7 +54,9 @@ def handle_message(event):
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
         #推播訊息給我自己
-        line_bot_api.push_message('U581ffde1bc9cb258045fe4d4781b57cc', TextSendMessage(text='你可以開始了'))
+        # line_bot_api.push_message('U581ffde1bc9cb258045fe4d4781b57cc', TextSendMessage(text='你可以開始了'))
+        push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
+        line_bot_api.push_message(push_message_request)
         #回復訊息給用戶
         line_bot_api.reply_message_with_http_info(
             ReplyMessageRequest(
