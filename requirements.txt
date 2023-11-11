@@ -4,7 +4,7 @@ beautifulsoup4==4.6.3
 requests==2.20.1 
 scipy 
 pandas==1.2.4 
-lxml==4.5.2 
+lxml==4.9.3
 line-bot-sdk==1.19.0 
 datetime  
 matplotlib 
