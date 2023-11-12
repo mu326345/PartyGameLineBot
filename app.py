@@ -1,5 +1,7 @@
 import os
+import re
 from flask import Flask, request, abort
+from linebot.models import MessageTemplateAction, TemplateSendMessage
 
 from linebot.v3 import (
     WebhookHandler
@@ -8,12 +10,13 @@ from linebot.v3.exceptions import (
     InvalidSignatureError
 )
 from linebot.v3.messaging import (
+    ButtonsTemplate,
     Configuration,
     ApiClient,
     MessagingApi,
     ReplyMessageRequest,
     TextMessage,
-    PushMessageRequest
+    PushMessageRequest,
 )
 from linebot.v3.webhooks import (
     MessageEvent,
@@ -36,9 +39,13 @@ def callback():
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
 
+    line_bot_api = MessagingApi(configuration)
     # handle webhook body
     try:
         handler.handle(body, signature)
+        #推播訊息給我自己
+        push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
+        line_bot_api.push_message(push_message_request)
     except InvalidSignatureError:
         app.logger.info("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
@@ -50,21 +57,41 @@ def callback():
 ##### 基本上程式編輯都在這個function ##### 
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
-    print('message~~~')
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
-        #推播訊息給我自己
-        # line_bot_api.push_message('U581ffde1bc9cb258045fe4d4781b57cc', TextSendMessage(text='你可以開始了'))
-        push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
-        line_bot_api.push_message(push_message_request)
-        #回復訊息給用戶
-        line_bot_api.reply_message_with_http_info(
-            ReplyMessageRequest(
-                reply_token=event.reply_token,
-                messages=[TextMessage(text=event.message.text)]
+        
+        msg = event.message.text
+        if msg == '安安':
+            select_game_msg = TemplateSendMessage(
+                alt_text='Buttons template',
+                template=ButtonsTemplate(
+                    title='遊戲項目',
+                    text='請選擇項目',
+                    actions=[
+                        MessageTemplateAction(
+                            label='骰子',
+                            text='骰子'
+                        ),
+                        MessageTemplateAction(
+                            label='果園菜園動物園',
+                            text='果園菜園動物園'
+                        ),
+                        MessageTemplateAction(
+                            label='比手畫腳',
+                            text='比手畫腳'
+                        ),
+                    ]
+                )
             )
-        )
-        line_bot_api.reply_message
+
+            #回復訊息給用戶
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=select_game_msg
+                    # messages=[TextMessage(text=event.message.text)]
+                )
+            )
 
 
 #主程式 
