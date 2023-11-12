@@ -67,7 +67,7 @@ def handle_message(event):
         msg = event.message.text
         if msg == '安安':
             select_game_msg = TemplateSendMessage(
-                alt_text='Buttons template',
+                alt_text='ButtonsTemplate',
                 template=ButtonsTemplate(
                     title='遊戲項目',
                     text='請選擇項目',
