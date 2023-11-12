@@ -1,4 +1,5 @@
 import os
+import random
 import re
 from flask import Flask, request, abort
 from linebot.models import MessageTemplateAction, TemplateSendMessage
@@ -95,6 +96,25 @@ def handle_message(event):
                 ))]
                 )
             )
+        elif msg == "骰子":
+            dice_result = roll_dice
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    replyToken=event.reply_token,
+                    messages=[TextMessage(text=dice_result)]
+                )
+            )
+            
+def roll_dice():
+    results = []
+    for _ in range(6):
+        # 骰子結果1~6
+        result = random.randint(1, 6)
+        results.append(result)
+    if set(sorted(results)) == {1,2,3,4,5,6}:
+        print('同花順，在骰一次')
+        return roll_dice()
+    return sorted(results)
 
             
 
