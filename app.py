@@ -112,7 +112,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=image_msg
+                    messages=[image_msg]
                 )
             )
             
