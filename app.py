@@ -2,7 +2,7 @@ import os
 import random
 import re
 from flask import Flask, request, abort
-from linebot.models import MessageTemplateAction, TemplateSendMessage
+from linebot.models import ImageSendMessage, MessageTemplateAction, TemplateSendMessage
 
 from linebot.v3 import (
     WebhookHandler
@@ -99,10 +99,19 @@ def handle_message(event):
         elif msg == "骰子":
             dice_result = roll_dice()
             print(dice_result)
+            # line_bot_api.reply_message(
+            #     ReplyMessageRequest(
+            #         replyToken=event.reply_token,
+            #         messages=[TextMessage(text='⚀')]
+            #     )
+            # )
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=[TextMessage(text='⚀')]
+                    messages=[ImageSendMessage(
+                        original_content_url='https://i.imgur.com/JutWCmK.png',
+                        preview_image_url='https://i.imgur.com/JutWCmK.png'
+                    )]
                 )
             )
             
