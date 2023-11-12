@@ -66,9 +66,12 @@ def handle_message(event):
         line_bot_api = MessagingApi(api_client)
         
         msg = event.message.text
+        print(msg)
         line_bot_api.reply_message(
-            event.reply_token,
-            msg
+            ReplyMessageRequest(
+                replyToken=event.reply_token,
+                messages=[TextMessage(text=msg)]
+            )
         )
 
         if msg == '安安':
@@ -97,8 +100,10 @@ def handle_message(event):
             #回復訊息給用戶
             print('1test')
             line_bot_api.reply_message(
-                event.reply_token,
-                select_game_msg
+                ReplyMessageRequest(
+                    replyToken=event.reply_token,
+                    messages=[TextMessage(text=select_game_msg)]
+                )
             )
             # print('2test')
             # line_bot_api.reply_message(event.reply_token,messages=select_game_msg)
