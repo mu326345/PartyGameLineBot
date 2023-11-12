@@ -102,16 +102,16 @@ def handle_message(event):
             # line_bot_api.reply_message(
             #     ReplyMessageRequest(
             #         replyToken=event.reply_token,
-            #         messages=[TextMessage(text='⚀')]
+                    # messages=[TextMessage(text='⚀')]
             #     )
             # )
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=[ImageSendMessage(
+                    messages=[{ImageSendMessage(
                         original_content_url='https://media.nownews.com/nn_media/thumbnail/2019/10/1570089924-27a9b9c9d7facd3422fe4610dd8ebe42-696x386.png',
                         preview_image_url='https://media.nownews.com/nn_media/thumbnail/2019/10/1570089924-27a9b9c9d7facd3422fe4610dd8ebe42-696x386.png'
-                    )]
+                    )}]
                 )
             )
             
