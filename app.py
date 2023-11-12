@@ -75,6 +75,7 @@ def handle_message(event):
         )
 
         if msg == '安安':
+            print('這裡有成功進入安安')
             select_game_msg = TemplateSendMessage(
                 alt_text='Buttons template',
                 template=ButtonsTemplate(
