@@ -39,16 +39,17 @@ def callback():
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
 
-    # line_bot_api = MessagingApi(configuration)
-
     # handle webhook body
     try:
         handler.handle(body, signature)
-        print('這裡應該是完成可以開始了')
-
-        # #推播訊息給我自己
-        # push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
-        # line_bot_api.push_message(push_message_request)
+        
+        # Add for notice start successful
+        with ApiClient(configuration) as api_client:
+            line_bot_api = MessagingApi(api_client)
+            #推播訊息給我自己
+            push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
+            line_bot_api.push_message(push_message_request)
+        # End 
     except InvalidSignatureError:
         app.logger.info("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
@@ -66,38 +67,38 @@ def handle_message(event):
         push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
         line_bot_api.push_message(push_message_request)
         
-        # msg = event.message.text
-        # if msg == '安安':
-        #     select_game_msg = TemplateSendMessage(
-        #         alt_text='Buttons template',
-        #         template=ButtonsTemplate(
-        #             title='遊戲項目',
-        #             text='請選擇項目',
-        #             actions=[
-        #                 MessageTemplateAction(
-        #                     label='骰子',
-        #                     text='骰子'
-        #                 ),
-        #                 MessageTemplateAction(
-        #                     label='果園菜園動物園',
-        #                     text='果園菜園動物園'
-        #                 ),
-        #                 MessageTemplateAction(
-        #                     label='比手畫腳',
-        #                     text='比手畫腳'
-        #                 ),
-        #             ]
-        #         )
-        #     )
-
-        #     #回復訊息給用戶
-        line_bot_api.reply_message(
-            ReplyMessageRequest(
-                reply_token=event.reply_token,
-                # messages=select_game_msg
-                messages=[TextMessage(text=event.message.text)]
+        msg = event.message.text
+        if msg == '安安':
+            select_game_msg = TemplateSendMessage(
+                alt_text='Buttons template',
+                template=ButtonsTemplate(
+                    title='遊戲項目',
+                    text='請選擇項目',
+                    actions=[
+                        MessageTemplateAction(
+                            label='骰子',
+                            text='骰子'
+                        ),
+                        MessageTemplateAction(
+                            label='果園菜園動物園',
+                            text='果園菜園動物園'
+                        ),
+                        MessageTemplateAction(
+                            label='比手畫腳',
+                            text='比手畫腳'
+                        ),
+                    ]
+                )
             )
-        )
+
+            #回復訊息給用戶
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    # messages=select_game_msg
+                    messages=[TextMessage(text=event.message.text)]
+                )
+            )
 
 
 #主程式 
