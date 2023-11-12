@@ -103,13 +103,8 @@ def handle_message(event):
             print('1test')
             line_bot_api.reply_message(
                 ReplyMessageRequest(
-                    replyToken=event.reply_token,
-                    messages=[
-                        {
-                            "type":"text",
-                            "text":"Hello, user"
-                    }
-                    ]
+                    event.reply_token,
+                    select_game_msg
                 )
             )
             # print('2test')
