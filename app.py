@@ -68,12 +68,12 @@ def handle_message(event):
         
         msg = event.message.text
         print(msg)
-        line_bot_api.reply_message(
-            ReplyMessageRequest(
-                replyToken=event.reply_token,
-                messages=[TextMessage(text=msg)]
-            )
-        )
+        # line_bot_api.reply_message(
+        #     ReplyMessageRequest(
+        #         replyToken=event.reply_token,
+        #         messages=[TextMessage(text=msg)]
+        #     )
+        # )
 
         if msg == '安安':
             print('這裡有成功進入安安')
@@ -104,27 +104,27 @@ def handle_message(event):
             print('1test')
             line_bot_api.reply_message(
                 ReplyMessageRequest(
-                    replyToken='U581ffde1bc9cb258045fe4d4781b57cc',
+                    replyToken=event.reply_token,
                     messages=[TemplateMessage(
                         alt_text='Buttons template',
                         template=ButtonsTemplate(
-                    type='buttons',
-                    title='遊戲項目',
-                    text='請選擇項目',
-                    actions=[
-                        MessageAction(
-                            label='骰子',
-                            text='骰子'
-                        ),
-                        MessageAction(
-                            label='果園菜園動物園',
-                            text='果園菜園動物園'
-                        ),
-                        MessageAction(
-                            label='比手畫腳',
-                            text='比手畫腳'
-                        ),
-                    ]
+                        type='buttons',
+                        title='遊戲項目',
+                        text='請選擇項目',
+                        actions=[
+                            MessageAction(
+                                label='骰子',
+                                text='骰子'
+                            ),
+                            MessageAction(
+                                label='果園菜園動物園',
+                                text='果園菜園動物園'
+                            ),
+                            MessageAction(
+                                label='比手畫腳',
+                                text='比手畫腳'
+                            ),
+                        ]
                 ))]
                 )
             )
