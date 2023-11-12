@@ -16,6 +16,7 @@ from linebot.v3.messaging import (
     MessageAction,
     MessagingApi,
     ReplyMessageRequest,
+    TemplateMessage,
     TextMessage,
     PushMessageRequest,
 )
@@ -104,7 +105,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=[select_game_msg]
+                    messages=[TemplateMessage(template=[select_game_msg])]
                 )
             )
             # print('2test')
