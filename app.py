@@ -68,63 +68,35 @@ def handle_message(event):
         
         msg = event.message.text
         if msg == '安安':
-            print('這裡有成功進入安安')
-            select_game_msg = TemplateSendMessage(
-                alt_text='Buttons template',
-                template=ButtonsTemplate(
-                    type='buttons',
-                    title='遊戲項目',
-                    text='請選擇項目',
-                    actions=[
-                        MessageAction(
-                            label='骰子',
-                            text='骰子'
-                        ),
-                        MessageAction(
-                            label='果園菜園動物園',
-                            text='果園菜園動物園'
-                        ),
-                        MessageAction(
-                            label='比手畫腳',
-                            text='比手畫腳'
-                        ),
-                    ]
-                )
-            )
-
             #回復訊息給用戶
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=[select_game_msg]
+                    messages=[TemplateMessage(
+                        alt_text='Buttons template',
+                        template=ButtonsTemplate(
+                        type='buttons',
+                        title='遊戲項目',
+                        text='請選擇項目',
+                        actions=[
+                            MessageAction(
+                                label='骰子',
+                                text='骰子'
+                            ),
+                            MessageAction(
+                                label='果園菜園動物園',
+                                text='果園菜園動物園'
+                            ),
+                            MessageAction(
+                                label='比手畫腳',
+                                text='比手畫腳'
+                            ),
+                        ]
+                ))]
                 )
             )
-            # line_bot_api.reply_message(
-            #     ReplyMessageRequest(
-            #         replyToken=event.reply_token,
-            #         messages=[TemplateMessage(
-            #             alt_text='Buttons template',
-            #             template=ButtonsTemplate(
-            #             type='buttons',
-            #             title='遊戲項目',
-            #             text='請選擇項目',
-            #             actions=[
-            #                 MessageAction(
-            #                     label='骰子',
-            #                     text='骰子'
-            #                 ),
-            #                 MessageAction(
-            #                     label='果園菜園動物園',
-            #                     text='果園菜園動物園'
-            #                 ),
-            #                 MessageAction(
-            #                     label='比手畫腳',
-            #                     text='比手畫腳'
-            #                 ),
-            #             ]
-            #     ))]
-            #     )
-            # )
+
+            
 
 #主程式 
 if __name__ == "__main__":
