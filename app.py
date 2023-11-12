@@ -98,6 +98,7 @@ def handle_message(event):
             )
         elif msg == "骰子":
             dice_result = roll_dice
+            print(dice_result)
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
