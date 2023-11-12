@@ -104,7 +104,7 @@ def handle_message(event):
             print('1test')
             line_bot_api.reply_message(
                 ReplyMessageRequest(
-                    replyToken=event.reply_token,
+                    replyToken='U581ffde1bc9cb258045fe4d4781b57cc',
                     messages=[TemplateMessage(
                         alt_text='Buttons template',
                         template=ButtonsTemplate(
