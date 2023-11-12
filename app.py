@@ -105,7 +105,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=TemplateMessage(template=ButtonsTemplate(
+                    messages=[TemplateMessage(template=ButtonsTemplate(
                     type='buttons',
                     title='遊戲項目',
                     text='請選擇項目',
@@ -123,7 +123,7 @@ def handle_message(event):
                             text='比手畫腳'
                         ),
                     ]
-                ))
+                ))]
                 )
             )
             # print('2test')
