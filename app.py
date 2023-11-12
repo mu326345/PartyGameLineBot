@@ -79,6 +79,7 @@ def handle_message(event):
             select_game_msg = TemplateSendMessage(
                 alt_text='Buttons template',
                 template=ButtonsTemplate(
+                    type='buttons',
                     title='遊戲項目',
                     text='請選擇項目',
                     actions=[
