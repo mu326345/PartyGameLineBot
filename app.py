@@ -109,8 +109,8 @@ def handle_message(event):
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
                     messages=[ImageMessage(
-                        original_content_url='https://imgur.com/JutWCmK',
-                        preview_image_url='https://imgur.com/JutWCmK'
+                        original_content_url='https://i.imgur.com/JutWCmK.png',
+                        preview_image_url='https://i.imgur.com/JutWCmK.png'
                     )]
                 )
             )
