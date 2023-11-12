@@ -2,7 +2,6 @@ import os
 import random
 import re
 from flask import Flask, request, abort
-from linebot.models import ImageSendMessage, MessageTemplateAction, TemplateSendMessage
 
 from linebot.v3 import (
     WebhookHandler
@@ -14,6 +13,7 @@ from linebot.v3.messaging import (
     ButtonsTemplate,
     Configuration,
     ApiClient,
+    ImageMessage,
     MessageAction,
     MessagingApi,
     ReplyMessageRequest,
@@ -108,7 +108,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=[ImageSendMessage(
+                    messages=[ImageMessage(
                         original_content_url='https://media.nownews.com/nn_media/thumbnail/2019/10/1570089924-27a9b9c9d7facd3422fe4610dd8ebe42-696x386.png',
                         preview_image_url='https://media.nownews.com/nn_media/thumbnail/2019/10/1570089924-27a9b9c9d7facd3422fe4610dd8ebe42-696x386.png'
                     )]
