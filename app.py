@@ -109,8 +109,8 @@ def handle_message(event):
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
                     messages=[ImageMessage(
-                        original_content_url='https://media.nownews.com/nn_media/thumbnail/2019/10/1570089924-27a9b9c9d7facd3422fe4610dd8ebe42-696x386.png',
-                        preview_image_url='https://media.nownews.com/nn_media/thumbnail/2019/10/1570089924-27a9b9c9d7facd3422fe4610dd8ebe42-696x386.png'
+                        original_content_url='https://imgur.com/JutWCmK',
+                        preview_image_url='https://imgur.com/JutWCmK'
                     )]
                 )
             )
