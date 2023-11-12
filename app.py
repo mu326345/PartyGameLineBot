@@ -29,6 +29,14 @@ configuration = Configuration(access_token='RJkuIv/f5RAlwvxCk49BfsBrO6wlmdRdaLOF
 #Channel Secret
 handler = WebhookHandler('c6db96275c3c55c24b705b7fda8a7fcd')
 
+# Add for notice start successful
+with ApiClient(configuration) as api_client:
+    line_bot_api = MessagingApi(api_client)
+    #推播訊息給我自己
+    push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
+    line_bot_api.push_message(push_message_request)
+# End 
+
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -45,14 +53,6 @@ def callback():
     except InvalidSignatureError:
         app.logger.info("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
-
-    # Add for notice start successful
-    with ApiClient(configuration) as api_client:
-        line_bot_api = MessagingApi(api_client)
-        #推播訊息給我自己
-        push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
-        line_bot_api.push_message(push_message_request)
-    # End 
 
     return 'OK'
 
@@ -92,8 +92,8 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    # messages=select_game_msg
-                    messages=[TextMessage(text=event.message.text)]
+                    messages=select_game_msg
+                    # messages=[TextMessage(text=event.message.text)]
                 )
             )
 
