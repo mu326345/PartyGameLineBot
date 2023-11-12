@@ -66,23 +66,27 @@ def handle_message(event):
         line_bot_api = MessagingApi(api_client)
         
         msg = event.message.text
-        print(msg)
+        line_bot_api.reply_message(
+            event.reply_token,
+            msg
+        )
+
         if msg == '安安':
             select_game_msg = TemplateSendMessage(
-                alt_text='ButtonsTemplate',
+                alt_text='Buttons template',
                 template=ButtonsTemplate(
                     title='遊戲項目',
                     text='請選擇項目',
                     actions=[
-                        MessageAction(
+                        MessageTemplateAction(
                             label='骰子',
                             text='骰子'
                         ),
-                        MessageAction(
+                        MessageTemplateAction(
                             label='果園菜園動物園',
                             text='果園菜園動物園'
                         ),
-                        MessageAction(
+                        MessageTemplateAction(
                             label='比手畫腳',
                             text='比手畫腳'
                         ),
@@ -93,14 +97,11 @@ def handle_message(event):
             #回復訊息給用戶
             print('1test')
             line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=select_game_msg
-                    # messages=[TextMessage(text=event.message.text)]
-                )
+                event.reply_token,
+                select_game_msg
             )
-            print('2test')
-            line_bot_api.reply_message(event.reply_token,messages=select_game_msg)
+            # print('2test')
+            # line_bot_api.reply_message(event.reply_token,messages=select_game_msg)
 
 
 #主程式 
