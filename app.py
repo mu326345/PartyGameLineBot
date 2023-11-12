@@ -39,13 +39,16 @@ def callback():
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
 
-    line_bot_api = MessagingApi(configuration)
+    # line_bot_api = MessagingApi(configuration)
+
     # handle webhook body
     try:
         handler.handle(body, signature)
-        #推播訊息給我自己
-        push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
-        line_bot_api.push_message(push_message_request)
+        print('這裡應該是完成可以開始了')
+
+        # #推播訊息給我自己
+        # push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
+        # line_bot_api.push_message(push_message_request)
     except InvalidSignatureError:
         app.logger.info("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
@@ -59,6 +62,9 @@ def callback():
 def handle_message(event):
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
+
+        push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
+        line_bot_api.push_message(push_message_request)
         
         # msg = event.message.text
         # if msg == '安安':
@@ -85,13 +91,13 @@ def handle_message(event):
         #     )
 
         #     #回復訊息給用戶
-        #     line_bot_api.reply_message(
-        #         ReplyMessageRequest(
-        #             reply_token=event.reply_token,
-        #             messages=select_game_msg
-        #             # messages=[TextMessage(text=event.message.text)]
-        #         )
-        #     )
+        line_bot_api.reply_message(
+            ReplyMessageRequest(
+                reply_token=event.reply_token,
+                # messages=select_game_msg
+                messages=[TextMessage(text=event.message.text)]
+            )
+        )
 
 
 #主程式 
