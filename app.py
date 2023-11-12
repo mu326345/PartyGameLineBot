@@ -13,6 +13,7 @@ from linebot.v3.messaging import (
     ButtonsTemplate,
     Configuration,
     ApiClient,
+    MessageAction,
     MessagingApi,
     ReplyMessageRequest,
     TextMessage,
@@ -65,6 +66,7 @@ def handle_message(event):
         line_bot_api = MessagingApi(api_client)
         
         msg = event.message.text
+        print(msg)
         if msg == '安安':
             select_game_msg = TemplateSendMessage(
                 alt_text='ButtonsTemplate',
@@ -72,15 +74,15 @@ def handle_message(event):
                     title='遊戲項目',
                     text='請選擇項目',
                     actions=[
-                        MessageTemplateAction(
+                        MessageAction(
                             label='骰子',
                             text='骰子'
                         ),
-                        MessageTemplateAction(
+                        MessageAction(
                             label='果園菜園動物園',
                             text='果園菜園動物園'
                         ),
-                        MessageTemplateAction(
+                        MessageAction(
                             label='比手畫腳',
                             text='比手畫腳'
                         ),
@@ -89,6 +91,7 @@ def handle_message(event):
             )
 
             #回復訊息給用戶
+            print('1test')
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
@@ -96,6 +99,8 @@ def handle_message(event):
                     # messages=[TextMessage(text=event.message.text)]
                 )
             )
+            print('2test')
+            line_bot_api.reply_message(event.reply_token,messages=select_game_msg)
 
 
 #主程式 
