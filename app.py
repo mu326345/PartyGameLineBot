@@ -60,38 +60,38 @@ def handle_message(event):
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
         
-        msg = event.message.text
-        if msg == '安安':
-            select_game_msg = TemplateSendMessage(
-                alt_text='Buttons template',
-                template=ButtonsTemplate(
-                    title='遊戲項目',
-                    text='請選擇項目',
-                    actions=[
-                        MessageTemplateAction(
-                            label='骰子',
-                            text='骰子'
-                        ),
-                        MessageTemplateAction(
-                            label='果園菜園動物園',
-                            text='果園菜園動物園'
-                        ),
-                        MessageTemplateAction(
-                            label='比手畫腳',
-                            text='比手畫腳'
-                        ),
-                    ]
-                )
-            )
+        # msg = event.message.text
+        # if msg == '安安':
+        #     select_game_msg = TemplateSendMessage(
+        #         alt_text='Buttons template',
+        #         template=ButtonsTemplate(
+        #             title='遊戲項目',
+        #             text='請選擇項目',
+        #             actions=[
+        #                 MessageTemplateAction(
+        #                     label='骰子',
+        #                     text='骰子'
+        #                 ),
+        #                 MessageTemplateAction(
+        #                     label='果園菜園動物園',
+        #                     text='果園菜園動物園'
+        #                 ),
+        #                 MessageTemplateAction(
+        #                     label='比手畫腳',
+        #                     text='比手畫腳'
+        #                 ),
+        #             ]
+        #         )
+        #     )
 
-            #回復訊息給用戶
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=select_game_msg
-                    # messages=[TextMessage(text=event.message.text)]
-                )
-            )
+        #     #回復訊息給用戶
+        #     line_bot_api.reply_message(
+        #         ReplyMessageRequest(
+        #             reply_token=event.reply_token,
+        #             messages=select_game_msg
+        #             # messages=[TextMessage(text=event.message.text)]
+        #         )
+        #     )
 
 
 #主程式 
