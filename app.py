@@ -99,12 +99,12 @@ def handle_message(event):
         elif msg == "骰子":
             dice_result = roll_dice()
             print(dice_result)
-            # line_bot_api.reply_message(
-            #     ReplyMessageRequest(
-            #         replyToken=event.reply_token,
-            #         messages=[TextMessage(text=dice_result)]
-            #     )
-            # )
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    replyToken=event.reply_token,
+                    messages=[TextMessage(text='⚀')]
+                )
+            )
             
 def roll_dice():
     results = []
@@ -115,8 +115,6 @@ def roll_dice():
     if set(sorted(results)) == {1,2,3,4,5,6}:
         print('同花順，在骰一次')
         return roll_dice()
-    print(results)
-    print(sorted(results))
     return sorted(results)
 
             
