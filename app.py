@@ -112,7 +112,6 @@ def handle_message(event):
                 )
             )
         elif msg == "果園菜園動物園":
-            print("果園阿")
             topic = get_topic_game()
             print(topic)
             line_bot_api.reply_message(
@@ -136,7 +135,6 @@ def roll_dice():
     return ', '.join(map(str, sorted(results)))
 
 def get_topic_game():
-    print("有進來吧")
     topics = [
         # 地方
         "果園", "菜園", "動物園", "職業", "國家", "捷運站", "縣市",
@@ -163,8 +161,7 @@ def get_topic_game():
         # 地理
         "山脈名稱", "地理古蹟",
     ]
-    topic = random.choice[topics]
-    print(topic)
+    topic = random.choice(topics)
     return topic
 
             
