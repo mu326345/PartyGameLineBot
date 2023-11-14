@@ -107,7 +107,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=[TextMessage(text='⚀⚁⚂⚃⚄⚅')]
+                    messages=[TextMessage(text=dice_result)]
                 )
             )
 
