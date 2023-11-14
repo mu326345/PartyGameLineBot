@@ -13,6 +13,7 @@ from linebot.v3.messaging import (
     ButtonsTemplate,
     Configuration,
     ApiClient,
+    Emoji,
     ImageMessage,
     ImagemapBaseSize,
     ImagemapMessage,
@@ -107,7 +108,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=[TextMessage(text=dice_result)]
+                    messages=[TextMessage(text=dice_result, emojis=[Emoji(index=0, productId="5ac21a8c040ab15980c9b43f", emojiId="053")])]
                 )
             )
 
