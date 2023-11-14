@@ -111,21 +111,16 @@ def handle_message(event):
                     messages=[TextMessage(text=dice_result)]
                 )
             )
+        elif msg == "果園菜園動物園":
+            topic = get_topic_game()
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    replyToken=event.reply_token,
+                    messages=[TextMessage(text=topic)]
+                )
+            )
 
-            #圖片回覆
-            #  line_bot_api.reply_message(
-            #     ReplyMessageRequest(
-            #         replyToken=event.reply_token,
-            #         messages=[ImageMessage(
-            #             original_content_url='https://i.imgur.com/TcMCBUf.png',
-            #             preview_image_url='https://i.imgur.com/TcMCBUf.png'
-            #         ),
-            #         ImageMessage(
-            #             original_content_url='https://i.imgur.com/TcMCBUf.png',
-            #             preview_image_url='https://i.imgur.com/TcMCBUf.png'
-            #         )]
-            #     )
-            # )
+            
             
 def roll_dice():
     results = []
@@ -137,6 +132,35 @@ def roll_dice():
         print('同花順，在骰一次')
         return roll_dice()
     return ', '.join(map(str, sorted(results)))
+
+def get_topic_game():
+    topics = [
+        # 地方
+        "果園", "菜園", "動物園", "職業", "國家", "捷運站", "縣市",
+        # 媒體與藝術
+        "電影", "書籍",
+        # 色彩
+        "顏色",
+        # 教育
+        "大學科系", "大學名稱",
+        # 飲食
+        "飲料", "飲料店", "食物", "餐廳", "甜點", "垃圾食物", "速食餐廳",
+        # 運動
+        "運動", "球類運動", "奧運項目",
+        # 科技
+        "科技產品", "大公司名稱",
+        # 娛樂
+        "男演員", "男歌手", "男藝人", "女演員", "女歌手", "女藝人", "偶像團體",
+        # 歷史與文學
+        "歷史朝代", "文學作家", "歷史人物", "科學家",
+        # 18+（注意：這個部分的主題可能不適合所有使用情境）
+        "AV女優", "汽車旅館", "飯店名稱",
+        # 休閒
+        "遊樂園",
+        # 地理
+        "山脈名稱", "地理古蹟",
+    ]
+    return random.choice[topics]
 
             
 
