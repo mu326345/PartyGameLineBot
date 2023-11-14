@@ -14,6 +14,8 @@ from linebot.v3.messaging import (
     Configuration,
     ApiClient,
     ImageMessage,
+    ImagemapBaseSize,
+    ImagemapMessage,
     MessageAction,
     MessagingApi,
     ReplyMessageRequest,
@@ -101,22 +103,38 @@ def handle_message(event):
         elif msg == "骰子":
             dice_result = roll_dice()
             print(dice_result)
-            # line_bot_api.reply_message(
+            #文字回覆
+            #  line_bot_api.reply_message(
             #     ReplyMessageRequest(
             #         replyToken=event.reply_token,
             #         messages=[TextMessage(text='dice1')]
             #     )
             # )
+
+            #圖片回覆
+            #  line_bot_api.reply_message(
+            #     ReplyMessageRequest(
+            #         replyToken=event.reply_token,
+            #         messages=[ImageMessage(
+            #             original_content_url='https://i.imgur.com/TcMCBUf.png',
+            #             preview_image_url='https://i.imgur.com/TcMCBUf.png'
+            #         ),
+            #         ImageMessage(
+            #             original_content_url='https://i.imgur.com/TcMCBUf.png',
+            #             preview_image_url='https://i.imgur.com/TcMCBUf.png'
+            #         )]
+            #     )
+            # )
+
+            #mipImage 回覆
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=[ImageMessage(
-                        original_content_url='https://i.imgur.com/TcMCBUf.png',
-                        preview_image_url='https://i.imgur.com/TcMCBUf.png'
-                    ),
-                    ImageMessage(
-                        original_content_url='https://i.imgur.com/TcMCBUf.png',
-                        preview_image_url='https://i.imgur.com/TcMCBUf.png'
+                    messages=[ImagemapMessage(
+                        type="imagemap",
+                        baseUrl="https://example.com/bot/images/rm001",
+                        altText="this is an imagemap",
+                        baseSize=ImagemapBaseSize(width=1040,height=1040)
                     )]
                 )
             )
