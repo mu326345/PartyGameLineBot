@@ -99,7 +99,7 @@ def handle_message(event):
                 )
             )
         elif msg == "骰子":
-            dice1 = '+---------+\n|         |\n|    ●    |\n|         |\n+---------+'
+            dice1 = '+---------+\n |             |\n|    ●    |\n|         |\n+---------+'
             dice_result = roll_dice()
             print(dice_result)
             line_bot_api.reply_message(
