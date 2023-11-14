@@ -69,12 +69,8 @@ def handle_message(event):
         
         msg = event.message.text
         if msg == '安安':
-            #回復訊息給用戶
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    replyToken=event.reply_token,
-                    messages=[TemplateMessage(
-                        alt_text='Buttons template',
+            star_message = TemplateMessage(
+                 alt_text='Buttons template',
                         template=ButtonsTemplate(
                         type='buttons',
                         title='遊戲項目',
@@ -93,7 +89,13 @@ def handle_message(event):
                                 text='比手畫腳'
                             ),
                         ]
-                ))]
+                )
+            )
+            #回復訊息給用戶
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    replyToken=event.reply_token,
+                    messages=[star_message]
                 )
             )
         elif msg == "骰子":
