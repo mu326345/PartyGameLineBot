@@ -108,7 +108,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=[TextMessage(text='$' + dice_result, emojis=[Emoji(index=0, productId="5ac21a8c040ab15980c9b43f", emojiId="053")])]
+                    messages=[TextMessage(text=dice_result)]
                 )
             )
 
@@ -128,10 +128,10 @@ def handle_message(event):
             # )
             
 def roll_dice():
-    results = []
+    results = [1,2.3,4,5,6]
     for _ in range(6):
         # 骰子結果1~6
-        result = random.randint(1, 6)
+        # result = random.randint(1, 6)
         results.append(result)
     if set(sorted(results)) == {1,2,3,4,5,6}:
         print('同花順，在骰一次')
