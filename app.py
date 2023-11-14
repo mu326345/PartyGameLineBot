@@ -99,23 +99,24 @@ def handle_message(event):
                 )
             )
         elif msg == "骰子":
+            dice1 = '+---------+\n|         |\n|    ●    |\n|         |\n+---------+'
             dice_result = roll_dice()
             print(dice_result)
-            # line_bot_api.reply_message(
-            #     ReplyMessageRequest(
-            #         replyToken=event.reply_token,
-            #         messages=[TextMessage(text='⚀')]
-            #     )
-            # )
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
-                    messages=[ImageMessage(
-                        original_content_url='https://i.imgur.com/JutWCmK.png',
-                        preview_image_url='https://i.imgur.com/JutWCmK.png'
-                    )]
+                    messages=[TextMessage(text=dice1)]
                 )
             )
+            # line_bot_api.reply_message(
+            #     ReplyMessageRequest(
+            #         replyToken=event.reply_token,
+            #         messages=[ImageMessage(
+            #             original_content_url='https://i.imgur.com/JutWCmK.png',
+            #             preview_image_url='https://i.imgur.com/JutWCmK.png'
+            #         )]
+            #     )
+            # )
             
 def roll_dice():
     results = []
