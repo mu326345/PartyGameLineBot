@@ -128,7 +128,7 @@ def handle_message(event):
             # )
             
 def roll_dice():
-    results = [1,2.3,4,5,6]
+    results = [1,2,3,4,5,6]
     for _ in range(6):
         # 骰子結果1~6
         result = random.randint(1, 6)
