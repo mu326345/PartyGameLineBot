@@ -131,8 +131,8 @@ def roll_dice():
     results = [1,2.3,4,5,6]
     for _ in range(6):
         # 骰子結果1~6
-        # result = random.randint(1, 6)
-        results.append(result)
+        result = random.randint(1, 6)
+        # results.append(result)
     if set(sorted(results)) == {1,2,3,4,5,6}:
         print('同花順，在骰一次')
         return roll_dice()
