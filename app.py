@@ -113,6 +113,7 @@ def handle_message(event):
             )
         elif msg == "果園菜園動物園":
             topic = get_topic_game()
+            print(topic)
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
@@ -160,7 +161,9 @@ def get_topic_game():
         # 地理
         "山脈名稱", "地理古蹟",
     ]
-    return random.choice[topics]
+    topic = random.choice[topics]
+    print(topic)
+    return topic
 
             
 
