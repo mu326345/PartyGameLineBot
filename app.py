@@ -111,12 +111,12 @@ def handle_message(event):
                 ReplyMessageRequest(
                     replyToken=event.reply_token,
                     messages=[ImageMessage(
-                        original_content_url='https://i.imgur.com/mA3nQi8.png',
-                        preview_image_url='https://i.imgur.com/mA3nQi8.png'
+                        original_content_url='https://i.imgur.com/TcMCBUf.png',
+                        preview_image_url='https://i.imgur.com/TcMCBUf.png'
                     ),
                     ImageMessage(
-                        original_content_url='https://i.imgur.com/mA3nQi8.png',
-                        preview_image_url='https://i.imgur.com/mA3nQi8.png'
+                        original_content_url='https://i.imgur.com/TcMCBUf.png',
+                        preview_image_url='https://i.imgur.com/TcMCBUf.png'
                     )]
                 )
             )
