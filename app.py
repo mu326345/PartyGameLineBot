@@ -135,7 +135,7 @@ def roll_dice():
     if set(sorted(results)) == {1,2,3,4,5,6}:
         print('同花順，在骰一次')
         return roll_dice()
-    return sorted(results)
+    return ', '.join(map(str, sorted(results)))
 
             
 
