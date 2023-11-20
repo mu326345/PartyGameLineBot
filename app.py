@@ -84,7 +84,7 @@ def handle_message(event):
                         type='buttons',
                         thumbnailImageUrl="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1688146935606.jpg",
                         imageAspectRatio='rectangle',
-                        imageSize='cover'
+                        imageSize='cover',
                         title='遊戲項目',
                         text='請選擇項目',
                         imageBackgroundColor='#FFFFFF'
