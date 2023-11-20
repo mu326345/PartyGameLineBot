@@ -45,8 +45,8 @@ handler = WebhookHandler('c6db96275c3c55c24b705b7fda8a7fcd')
 with ApiClient(configuration) as api_client:
     line_bot_api = MessagingApi(api_client)
     #推播訊息給我自己
-    push_message_request = PushMessageRequest(to='U581ffde1bc9cb258045fe4d4781b57cc',messages=[TextMessage(text='你可以開始了')])
-    line_bot_api.push_message(push_message_request)
+    # push_message_request = PushMessageRequest(to='',messages=[TextMessage(text='你可以開始了')])
+    # line_bot_api.push_message(push_message_request)
 # End 
 
 # 監聽所有來自 /callback 的 Post Request
@@ -82,11 +82,11 @@ def handle_message(event):
                  alt_text='Buttons template',
                         template=ButtonsTemplate(
                         type='buttons',
-                        thumbnailImageUrl='https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1688146935606.jpg',
+                        thumbnailImageUrl=get_funny_image(),
                         imageAspectRatio='rectangle',
                         imageSize='cover',
-                        title='遊戲項目',
-                        text='請選擇項目',
+                        title='派對遊戲',
+                        text='請選擇遊戲項目',
                         imageBackgroundColor='#FFFFFF',
                         actions=[
                             MessageAction(
@@ -139,7 +139,19 @@ def handle_message(event):
             )
 
 
-            
+def get_funny_image():
+    imgs = [
+        'https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1688146935606.jpg',
+        'https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1679856272453.jpg',
+        'https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1672581521294.jpg',
+        'https://megapx-assets.dcard.tw/images/0cb79dda-a5c1-4b62-b3ae-8f78e044c986/1280.jpeg',
+        'https://img.kuku9.com/uploadimg/image/20190815/1565840862759.jpg',
+        'https://img.youjidi.net/uploadimg/image/20190826/20190826145207_59540.jpg',
+        'https://img.qq241.com/uploads/images/20201229/20201229162115_62884.jpg',
+        'https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1611334408361.jpg'
+    ]
+    img = random.choice(imgs)
+    return img
             
 def roll_dice():
     results = []
