@@ -84,7 +84,7 @@ def handle_message(event):
                         type='buttons',
                         thumbnailImageUrl=get_funny_image(),
                         imageAspectRatio='rectangle',
-                        imageSize='cover',
+                        imageSize='contain',
                         title='派對遊戲',
                         text='請選擇遊戲項目',
                         imageBackgroundColor='#FFFFFF',
