@@ -1,6 +1,7 @@
 # Line bot 派對遊戲
 ### 提供骰子、果園菜園動物園、比手畫腳，隨時隨地簡單開局
 [點擊這裡添加LINE好友](https://liff.line.me/1645278921-kWRPP32q/?accountId=277azpzj)
+<br/><br/>
 
 ## 功能介紹
 ### 安安梗圖
@@ -28,13 +29,13 @@
  </div>
 
 ## 技術
-[LINE Developers-Messaging API](https://liff.line.me/1645278921-kWRPP32q/?accountId=277azpzj)
+[LINE Developers-Messaging API](https://liff.line.me/1645278921-kWRPP32q/?accountId=277azpzj) <br />
 [Heroku](https://www.heroku.com/)
 
 ## 參考
-[陳陳|方格子 vocus](https://vocus.cc/user/@adsads023023)
+[陳陳|方格子 vocus](https://vocus.cc/user/@adsads023023) <br />
 步驟超級詳細、保母級教學文，大推
 
 ## 聯絡
-Yuyu Lin - yuyulin9608@gamil.com
+Yuyu Lin - yuyulin9608@gamil.com <br />
 歡迎提供更多題目給我～～
