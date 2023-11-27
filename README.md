@@ -9,20 +9,20 @@
  <img src ="https://i.imgur.com/CLavcDR.png" width="250">
  </div>
 
- ###骰子
+ ### 骰子
  貼心排序骰子結果，讓你一目了然
  <div align=left>
  <img src ="https://i.imgur.com/qPz0Abx.png" width="250">
  </div>
  
-  ###果園菜園動物園
+ ### 果園菜園動物園
  讓你不用再苦惱想題目
  <div align=left>
  <img src ="https://i.imgur.com/kVf53fB.png" width="250">
  </div>
  
-  ###比手畫腳
-考驗默契就靠比手畫腳了！
+ ### 比手畫腳
+ 考驗默契就靠比手畫腳了！
  <div align=left>
  <img src ="https://i.imgur.com/BOR0Vg9.png" width="250">
  </div>
@@ -35,6 +35,6 @@
 [陳陳-方格子](https://vocus.cc/user/@adsads023023)
 步驟超級詳細、保母級教學文，大推
 
-##聯絡
+## 聯絡
 Yuyu Lin - yuyulin9608@gamil.com
 歡迎提供更多題目給我～～
